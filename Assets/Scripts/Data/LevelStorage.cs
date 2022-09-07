@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,30 +27,57 @@ public class LevelStorage : MonoBehaviour
         {
             SetStartLevel();
         }
-        return Levels.Find(item => item.name == PlayerPrefs.GetString(_currentLevel));;
+
+        return Levels.Find(item => item.name == PlayerPrefs.GetString(_currentLevel));
+        ;
     }
-    
-    public void SetStartLevel()
+
+    public void SetCurrentLevel(LevelSettings level)
+    {
+        PlayerPrefs.SetString(_currentLevel, level.name);
+        PlayerPrefs.Save();
+    }
+
+    public void ResetAllLevels()
+    {
+        for (int i = 0; i < GetLevelList().Count; i++)
+        {
+            if (i == 0)
+            {
+                continue;
+            }
+            else
+            {
+                Levels[i].Bought = false;
+                PlayerPrefs.SetInt(Levels[i].name, Convert.ToInt32(Levels[i].Bought));
+            }
+        }
+    }
+
+    private void SetStartLevel()
     {
         PlayerPrefs.SetString(_currentLevel, Levels[0].name);
         PlayerPrefs.Save();
     }
 
-    public void SetCurrentLevel(int id)
-    {
-        PlayerPrefs.SetString(_currentLevel, Levels[id].name);
-        PlayerPrefs.Save();
-    }
-
     private void CreateLevelList()
     {
-        foreach (LevelSettings level in Resources.LoadAll<LevelSettings>("Levels")) 
+        foreach (LevelSettings level in Resources.LoadAll<LevelSettings>("Levels"))
         {
             Levels.Add(level);
+            if (!PlayerPrefs.HasKey(level.name))
+            {
+                PlayerPrefs.SetInt(level.name, Convert.ToInt32(level.Bought));
+            }
+            else
+            {
+                level.Bought = Convert.ToBoolean(PlayerPrefs.GetInt(level.name));
+            }
+
             // Debug.Log("Objects was found: " + level.name);
         }
     }
-    
+
 
     private void Awake()
     {
@@ -65,7 +93,7 @@ public class LevelStorage : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         GetLevelList();
         SetStartLevel();
         // Debug.Log(GetCurrentLevel().name);

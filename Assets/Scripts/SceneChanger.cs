@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(_sceneNumber);
+        Fader.FadeMaker.LoadScene(_sceneNumber);
     }
 
     private void Start()

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2a65be69d51a24f8fb04d5396f658a, type: 3}
   m_Name: 3-3_StartOfTheEnd
   m_EditorClassIdentifier: 
-  LevelType: 0
-  MaxProgress: 0
-  RoundTimeInSeconds: 0
-  ItemsFireRate: 0
-  Sprite: {fileID: 0}
+  MaxProgress: 20
+  RoundTimeInSeconds: 60
+  ItemsFireRate: 1
+  MaxItemsPerFire: 3
+  Sprite: {fileID: 21300000, guid: e3ab0fb335e80b0468ebb111eda77325, type: 3}
+  Bought: 1
+  Cost: 160

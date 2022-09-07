@@ -23,23 +23,26 @@ public class BallThrower : MonoBehaviour
     private const string _triggerGoLeft = "GoLeft";
 
     private const string _triggerGoRight = "GoRight";
-    // private const string _triggerStop = "Stop";
-    
+
     public Item Shoot()
     {
         Item item;
-        // if (Random.Range(0, 100) < 60)
-        //     item = (Ball) Instantiate(_items[0], _spawnPosition.position, _spawnPosition.rotation);
-        //
-        // else if (Random.Range(0, 100) < 50)
-        //     item = (Bomb) Instantiate(_items[1], _spawnPosition.position, _spawnPosition.rotation);
-        //
-        // else
-        //     item = (Coin) Instantiate(_items[2], _spawnPosition.position, _spawnPosition.rotation);
-        // item = (Bomb) Instantiate(_items[1], _spawnPosition.position, _spawnPosition.rotation);
-        item = (Ball) Instantiate(_items[0], _spawnPosition.position, _spawnPosition.rotation);
+        if (Random.Range(0, 100) < 60)
+            item = (Ball) Instantiate(_items[0], _spawnPosition.position, _spawnPosition.rotation);
+        
+        else if (Random.Range(0, 100) < 50)
+            item = (Bomb) Instantiate(_items[1], _spawnPosition.position, _spawnPosition.rotation);
+        
+        else
+            item = (Coin) Instantiate(_items[2], _spawnPosition.position, _spawnPosition.rotation);
         item.Throw(_target);
         return item;
+    }
+
+    public Item[] ShootMany()
+    {
+        
+        return null;
     }
     
     private void Awake()

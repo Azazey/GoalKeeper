@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2a65be69d51a24f8fb04d5396f658a, type: 3}
   m_Name: 1-1_FirstLevel
   m_EditorClassIdentifier: 
-  LevelType: 0
-  MaxProgress: 13
-  RoundTimeInSeconds: 120
-  ItemsFireRate: 3
+  MaxProgress: 12
+  RoundTimeInSeconds: 160
+  ItemsFireRate: 4
+  MaxItemsPerFire: 1
+  Sprite: {fileID: 21300000, guid: f5e559ff44f89d949894415ba1a485d1, type: 3}
+  Bought: 1
+  Cost: 0

@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
 
     protected bool _itemHit;
     protected Vector3 _directionToTarget;
-    
+
     public void Throw(Transform target)
     {
         _itemHit = false;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class PlayerBelongs
 {
@@ -49,7 +50,9 @@ public static class PlayerBelongs
     public static void ResetAllBelongs()
     {
         PlayerPrefs.SetInt(Score, _resetValue);
-        PlayerPrefs.SetInt(Money, _resetValue);
+        PlayerPrefs.SetInt(Money, 2000);
+        LevelStorage.Storage.ResetAllLevels();
+        Fader.FadeMaker.LoadScene(0);
     }
 
     public static void ResetMoney()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ball : Item
 {
+    [SerializeField] private AudioSource _kickSound;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -22,5 +24,6 @@ public class Ball : Item
     private void Ricochet()
     {
         _rigidbody.AddForce(-_directionToTarget.normalized * _force, ForceMode.VelocityChange);
+        _kickSound.Play();
     }
 }
